@@ -11,35 +11,35 @@
 
     <Grid Background="Gainsboro" 
     	  Margin="20"
-	  RowDefinitions="Auto, Auto, Auto, Auto, Auto, *" 
-	  ColumnDefinitions="Auto, Auto, Auto, Auto, 810, Auto">
+	  RowDefinitions="Auto, Auto, Auto, Auto, *, *" 
+	  ColumnDefinitions="Auto, Auto, Auto, Auto, 700, *">
 
 	<!-- Flipper Dolphin logo -->
 	<Image  Height="100" Width="100"
 		Grid.Row="0" Grid.Column="0"
 		Stretch="Uniform"
+		HorizontalAlignment="Left"
+		
 		Source="avares://AvaloniaApplication1/Assets/mascot_image.png"
 		 />
 
-        <!-- Manual Entry Button -->
-        <Button Content="Manual Entry"
-		Grid.Row="1"
-		Grid.Column="0"
-                Width="120"
-                Height="30"
-                HorizontalAlignment="Left"
-                Click="GoToUserControl1"/>
+	<StackPanel Orientation="Horizontal" Spacing="4"
+			VerticalAlignment="Bottom" Grid.Row="0" Grid.Column="0"
+			HorizontalAlignment="Center"
+			>
+		<!-- Manual Entry Button -->
+		<Button Content="Manual Entry"
+			Width="120"
+			Height="30"
+			Click="GoToUserControl1"/>
 
-	
-	<!-- Flipper Text File Button -->
-        <Button Content="FlipperTxt"
-		Grid.Row="1"
-		Grid.Column="0"
-                Width="120"
-                Height="30"
-                HorizontalAlignment="Right"
-                Click="GoToUserControl2"/>
-
+		
+		<!-- Flipper Text File Button -->
+		<Button Content="FlipperTxt"
+			Width="120"
+			Height="30"
+			Click="GoToUserControl2"/>
+	</StackPanel>
 
         <!-- DataGrid Table -->
         <DataGrid Name="EventsGrid"
@@ -50,9 +50,7 @@
                   HorizontalAlignment="Stretch"
                   VerticalAlignment="Stretch"
 		  Background="White"
-		  GridLinesVisibility="All"
-		  BorderThickness="6"
-		  BorderBrush="Black">
+		  GridLinesVisibility="All">
 
 
             <DataGrid.Columns>
@@ -71,7 +69,7 @@
 
 	<!-- Right Section -->
 	<Border Grid.Column="1" Grid.Row="2" Background="Black"
-		Width="300"	Height="810">  
+		Width="300"	Height="700">  
 		<TextBlock Text="Description: " Foreground="White"/>
 	</Border>
 	<!-- Bottom Section -->
