@@ -1,0 +1,74 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AvaloniaApplication1"
+        x:Class="AvaloniaApplication1.MainWindow"
+        x:CompileBindings="False"
+        Title="AvaloniaApplication1"
+	WindowState="FullScreen"
+        mc:Ignorable="d">
+
+    <Grid Background="Gainsboro" 
+    	  Margin="20"
+	  RowDefinitions="Auto, 810, *, *" 
+	  ColumnDefinitions="Auto, Auto, *, *">
+
+        <!-- Manual Entry Button -->
+        <Button Content="Manual Entry"
+		Grid.Row="0"
+		Grid.Column="0"
+                Width="120"
+                Height="30"
+                HorizontalAlignment="Left"
+                Click="GoToUserControl1"/>
+
+
+	
+	<!-- Flipper Text File -->
+        <Button Content="FlipperTxt"
+                Width="120"
+                Height="30"
+                HorizontalAlignment="Right"
+                Click="GoToUserControl2"/>
+
+
+        <!-- DataGrid Table -->
+        <DataGrid Name="EventsGrid"
+                  Grid.Column="0"
+		  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch"
+		  Background="White"
+		  GridLinesVisibility="All"
+		  BorderThickness="6"
+		  BorderBrush="Black">
+
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="TimeStamp"   Binding="{Binding TimeStamp}"   Width="Auto"/>
+                <DataGridTextColumn Header="Location"    Binding="{Binding Location}" 	 Width="Auto"/>
+                <DataGridTextColumn Header="Event Name" Binding="{Binding EventTypeID}" Width="Auto"/>
+                <DataGridTextColumn Header="Result"      Binding="{Binding Result}"      Width="Auto"/>
+                <DataGridTextColumn Header="Employee ID"       Binding="{Binding EmpID}"       Width="Auto"/>
+
+
+                <DataGridTextColumn Header="EventID"     Binding="{Binding EventID}"      Width="Auto"/>
+                <DataGridTextColumn Header="Source"      Binding="{Binding Source}"       Width="Auto"/>
+                <DataGridTextColumn Header="DeviceID"    Binding="{Binding DeviceID}"     Width="Auto"/>
+                <DataGridTextColumn Header="Details"     Binding="{Binding Details}"      Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+	<Border Grid.Column="1" Grid.Row="1" Background="Black" Width="300">
+		<TextBlock Text="Description: " Foreground="White"/>
+	</Border>
+
+
+	<Border Grid.Column="0" Grid.Row="2" Background="Orange" Grid.ColumnSpan="2">
+	</Border>
+
+    </Grid>
+</Window>

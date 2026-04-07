@@ -1,0 +1,47 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="AvaloniaApplication1.UserControl1"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignWidth="600"
+             d:DesignHeight="400">
+
+    <ScrollViewer Padding="20">
+        <StackPanel Spacing="8" Width="400" HorizontalAlignment="Center">
+
+            <Button Name="BackButton" Content="Back" HorizontalAlignment="Left" Width="80" Margin="0,0,0,10"/>
+        
+            <TextBlock Text="Source:"/>
+            <TextBox Name="SourceBox" Height="25"/>
+
+            
+            <TextBlock Text="Location:"/>
+            <TextBox Name="LocationBox" Height="25"/>
+
+            
+            <TextBlock Text="EventTypeID:"/>
+            <TextBox Name="EventTypeIDBox" Height="25"/>
+
+           
+            <TextBlock Text="Result:"/>
+            <TextBox Name="ResultBox" Height="25"/>
+
+            
+            <TextBlock Text="DeviceID:"/>
+            <TextBox Name="DeviceIDBox" Height="25"/>
+
+           
+            <TextBlock Text="Details:"/>
+            <TextBox Name="DetailsBox" Height="50" AcceptsReturn="True"/>
+
+            
+            <TextBlock Text="EmpID:"/>
+            <TextBox Name="EmpIDBox" Height="25"/>
+
+            
+            <Button Name="SubmitButton" Content="Submit" HorizontalAlignment="Right" Width="80" Margin="0,10,0,0"/>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
