@@ -18,6 +18,10 @@
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
+	<ItemGroup>
+		<AvaloniaResource Include="Assets\**" />
+	</ItemGroup>
+
 
 	<ItemGroup>
 		<PackageReference Include="Avalonia" Version="11.3.13" />

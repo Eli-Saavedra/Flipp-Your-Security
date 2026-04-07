@@ -11,22 +11,30 @@
 
     <Grid Background="Gainsboro" 
     	  Margin="20"
-	  RowDefinitions="Auto, 810, *, *" 
-	  ColumnDefinitions="Auto, Auto, *, *">
+	  RowDefinitions="Auto, Auto, Auto, Auto, Auto, *" 
+	  ColumnDefinitions="Auto, Auto, Auto, Auto, 810, Auto">
+
+	<!-- Flipper Dolphin logo -->
+	<Image  Height="100" Width="100"
+		Grid.Row="0" Grid.Column="0"
+		Stretch="Uniform"
+		Source="avares://AvaloniaApplication1/Assets/mascot_image.png"
+		 />
 
         <!-- Manual Entry Button -->
         <Button Content="Manual Entry"
-		Grid.Row="0"
+		Grid.Row="1"
 		Grid.Column="0"
                 Width="120"
                 Height="30"
                 HorizontalAlignment="Left"
                 Click="GoToUserControl1"/>
 
-
 	
-	<!-- Flipper Text File -->
+	<!-- Flipper Text File Button -->
         <Button Content="FlipperTxt"
+		Grid.Row="1"
+		Grid.Column="0"
                 Width="120"
                 Height="30"
                 HorizontalAlignment="Right"
@@ -36,7 +44,7 @@
         <!-- DataGrid Table -->
         <DataGrid Name="EventsGrid"
                   Grid.Column="0"
-		  Grid.Row="1"
+		  Grid.Row="2"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
                   HorizontalAlignment="Stretch"
@@ -54,7 +62,6 @@
                 <DataGridTextColumn Header="Result"      Binding="{Binding Result}"      Width="Auto"/>
                 <DataGridTextColumn Header="Employee ID"       Binding="{Binding EmpID}"       Width="Auto"/>
 
-
                 <DataGridTextColumn Header="EventID"     Binding="{Binding EventID}"      Width="Auto"/>
                 <DataGridTextColumn Header="Source"      Binding="{Binding Source}"       Width="Auto"/>
                 <DataGridTextColumn Header="DeviceID"    Binding="{Binding DeviceID}"     Width="Auto"/>
@@ -62,12 +69,13 @@
             </DataGrid.Columns>
         </DataGrid>
 
-	<Border Grid.Column="1" Grid.Row="1" Background="Black" Width="300">
+	<!-- Right Section -->
+	<Border Grid.Column="1" Grid.Row="2" Background="Black"
+		Width="300"	Height="810">  
 		<TextBlock Text="Description: " Foreground="White"/>
 	</Border>
-
-
-	<Border Grid.Column="0" Grid.Row="2" Background="Orange" Grid.ColumnSpan="2">
+	<!-- Bottom Section -->
+	<Border Grid.Column="0" Grid.Row="3" Background="Orange" Grid.ColumnSpan="2" Height="200">
 	</Border>
 
     </Grid>
