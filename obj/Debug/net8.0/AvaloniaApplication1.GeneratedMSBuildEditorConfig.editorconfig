@@ -18,6 +18,8 @@ build_property.RootNamespace = AvaloniaApplication1
 build_property.ProjectDir = /home/eliud/Documents/AvaloniaApplication1 - Copy/AvaloniaApplication1/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
 
 [/home/eliud/Documents/AvaloniaApplication1 - Copy/AvaloniaApplication1/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

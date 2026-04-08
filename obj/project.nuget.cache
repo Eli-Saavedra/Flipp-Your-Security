@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "oWpIsLyaGC130ovvaHUjyO5vox5yghh2Kc1C9ehgtWAnw4jJAOy91rYq33A5q3JJDuuw/pcLb8iEsNOAMqISkw==",
+  "dgSpecHash": "gR1VJL3S3zg=",
   "success": true,
   "projectFilePath": "/home/eliud/Documents/AvaloniaApplication1 - Copy/AvaloniaApplication1/AvaloniaApplication1.csproj",
   "expectedPackageFiles": [
@@ -39,7 +39,8 @@
     "/home/eliud/.nuget/packages/sqlitepclraw.provider.e_sqlite3/2.1.11/sqlitepclraw.provider.e_sqlite3.2.1.11.nupkg.sha512",
     "/home/eliud/.nuget/packages/system.io.pipelines/8.0.0/system.io.pipelines.8.0.0.nupkg.sha512",
     "/home/eliud/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
-    "/home/eliud/.nuget/packages/tmds.dbus.protocol/0.21.2/tmds.dbus.protocol.0.21.2.nupkg.sha512"
+    "/home/eliud/.nuget/packages/tmds.dbus.protocol/0.21.2/tmds.dbus.protocol.0.21.2.nupkg.sha512",
+    "/home/eliud/.nuget/packages/microsoft.netcore.app.host.linux-x64/8.0.25/microsoft.netcore.app.host.linux-x64.8.0.25.nupkg.sha512"
   ],
   "logs": []
 }
