@@ -12,8 +12,8 @@ public class EventModel
     public string TimeStamp { get; set; } = "";
     public string Source { get; set; } = "";
     public string Location { get; set; } = "";
-    public int EventTypeID { get; set; }
-    public string Result { get; set; } = "";
+    public string EventName { get; set; }
+    public string EventResult { get; set; } = "";
     public string DeviceID { get; set; } = "";
     public string Details { get; set; } = "";
     public int EmpID { get; set; }

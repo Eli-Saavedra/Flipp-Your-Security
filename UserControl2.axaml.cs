@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Threading;
 using System;
 using System.IO;
 
@@ -8,13 +9,25 @@ namespace AvaloniaApplication1;
 public partial class UserControl2 : UserControl
 {
     private MainWindow _mainWindow;
-    private string FlipperInputPath => Path.Combine(AppContext.BaseDirectory, "Data", "FlipperInput.txt");
+    private DispatcherTimer _timer;
+
+    private string FlipperInputPath = @"C:\FlipperData\FlipperInput.txt";
 
     public UserControl2(MainWindow mainWindow)
     {
         InitializeComponent();
         _mainWindow = mainWindow;
 
+        LoadFileContents();
+
+        _timer = new DispatcherTimer();
+        _timer.Interval = TimeSpan.FromSeconds(1);
+        _timer.Tick += Timer_Tick;
+        _timer.Start();
+    }
+
+    private void Timer_Tick(object? sender, EventArgs e)
+    {
         LoadFileContents();
     }
 
@@ -40,6 +53,8 @@ public partial class UserControl2 : UserControl
 
     private void GoBack_Click(object? sender, RoutedEventArgs e)
     {
+        _timer?.Stop();
         _mainWindow.ShowMainView();
     }
 }
+
