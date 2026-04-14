@@ -6,11 +6,33 @@
 	x:Class="AvaloniaApplication1.MainWindow"
 	x:CompileBindings="False"
 	Title="AvaloniaApplication1"
-	WindowState="FullScreen"
+	Width="900"
+	Height="600"
 	mc:Ignorable="d">
 
-	<!--rows=headergrid,{datagrid,border_black},border_orange-->
-	<!-- columns={header,Datagrid,border_orange},border_black -->
+	<Window.Styles>
+
+		<Style Selector="DataGrid">
+			<Setter Property="Foreground" Value="Black" />
+			<Setter Property="Background" Value="White" />
+		</Style>
+
+		<Style Selector="DataGridRow">
+			<Setter Property="Foreground" Value="Black" />
+			<Setter Property="Background" Value="White" />
+		</Style>
+
+		<Style Selector="DataGridRow:selected">
+			<Setter Property="Background" Value="#CCE5FF" />
+			<Setter Property="Foreground" Value="Black" />
+		</Style>
+
+		<Style Selector="DataGridCell">
+			<Setter Property="Foreground" Value="Black" />
+		</Style>
+
+	</Window.Styles>
+
 
 	<Grid Background="Gainsboro"
 		Margin="20"
@@ -25,7 +47,7 @@
 			RowDefinitions="Auto"
 			ColumnDefinitions="Auto,Auto,Auto">
 			<!-- Flipper Dolphin logo -->
-			<Image Height="100" Width="100"
+			<Image Height="80" Width="80"
 				Grid.Row="0" Grid.Column="0"
 				Stretch="Uniform"
 				HorizontalAlignment="Left"
@@ -34,7 +56,9 @@
 			<Button Grid.Row="0" Grid.Column="1"
 				VerticalAlignment="Bottom"
 				Content="Manual Entry"
-				Width="120" Height="30"
+				Width="120"
+				Height="30"
+				Margin="10,0,0,0"
 				Click="GoToUserControl1" />
 			<!-- Flipper Text File Button -->
 			<Button Grid.Row="0" Grid.Column="2"
@@ -42,6 +66,7 @@
 				Content="FlipperTxt"
 				Width="120"
 				Height="30"
+				Margin="10,0,0,0"
 				Click="GoToUserControl2" />
 		</Grid>
 
@@ -52,9 +77,8 @@
 			Grid.Row="1"
 			AutoGenerateColumns="False"
 			IsReadOnly="True"
-			HorizontalAlignment="Stretch"
-			VerticalAlignment="Stretch"
 			Background="White"
+			Foreground="Black"
 			GridLinesVisibility="All">
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="TimeStamp" Binding="{Binding TimeStamp}"
@@ -67,14 +91,11 @@
 					Width="Auto" />
 				<DataGridTextColumn Header="Employee ID" Binding="{Binding EmpID}"
 					Width="Auto" />
-
 				<DataGridTextColumn Header="EventID" Binding="{Binding EventID}"
 					Width="Auto" />
 				<DataGridTextColumn Header="Source" Binding="{Binding Source}"
 					Width="Auto" />
 				<DataGridTextColumn Header="DeviceID" Binding="{Binding DeviceID}"
-					Width="Auto" />
-				<DataGridTextColumn Header="Details" Binding="{Binding Details}"
 					Width="Auto" />
 			</DataGrid.Columns>
 		</DataGrid>
@@ -82,20 +103,26 @@
 		<!-- Right Section Detail Section -->
 		<Border
 			Grid.Column="1" Grid.Row="1" Background="Black"
-			HorizontalAlignment="Stretch"
-			VerticalAlignment="Stretch">
+			Margin="10,0,0,0"
+			Padding="10">
 
 			<TextBlock
-				Text="Description: I Fill the remaining space aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-				Foreground="White" />
+				x:Name="DetailsPanel"
+				Text="Select an Event"
+				Foreground="White"
+				TextWrapping="Wrap"
+				VerticalAlignment="Top" />
 		</Border>
 		<!-- Bottom Section -->
 		<Border
 			Grid.Column="0" Grid.Row="2" Background="Orange" Grid.ColumnSpan="2"
-			VerticalAlignment="Stretch">
+			VerticalAlignment="Stretch"
+			Margin="0,10,0,0">
 
-			<TextBlock Text="Description: I Fill the remaining space "
-				Foreground="White" />
+			<TextBlock Text="Status / logs area"
+				Foreground="Black"
+				VerticalAlignment="Center"
+				Margin="10,0" />
 		</Border>
 
 	</Grid>

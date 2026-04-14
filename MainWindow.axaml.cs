@@ -14,15 +14,31 @@ namespace AvaloniaApplication1
         private string FlipperInputPath = @"C:\FlipperData\FlipperInput.txt";
 
         private InputScript _inputScript;
-
         private DispatcherTimer _refreshTimer;
+
+        private TextBlock? _detailsPanel;
+        // Stable backing list (IMPORTANT FIX)
+        private List<EventModel> _eventsCache = new();
 
         public MainWindow()
         {
             InitializeComponent();
+
             _inputScript = new InputScript(DbPath, FlipperInputPath);
+
+            var grid = this.FindControl<DataGrid>("EventsGrid");
+
+            // ADD THIS
+            _detailsPanel = this.FindControl<TextBlock>("DetailsPanel");
+
+            // Bind ONCE only
+            grid.ItemsSource = _eventsCache;
+
+            // ADD THIS
+            grid.SelectionChanged += Grid_SelectionChanged;
+
             LoadAllEvents();
-            SetupAutoRefresh(); // <-- start the timer
+            SetupAutoRefresh();
         }
 
         private void InitializeComponent()
@@ -30,6 +46,9 @@ namespace AvaloniaApplication1
             AvaloniaXamlLoader.Load(this);
         }
 
+        // =========================
+        // TIMER (SAFE)
+        // =========================
         private void SetupAutoRefresh()
         {
             _refreshTimer = new DispatcherTimer
@@ -39,31 +58,46 @@ namespace AvaloniaApplication1
 
             _refreshTimer.Tick += (s, e) =>
             {
-                _inputScript.Process();  // <-- THIS IS REQUIRED
-                LoadAllEvents();
+                _inputScript.Process();
+
+                // IMPORTANT: force UI update safely
+                Dispatcher.UIThread.Post(() =>
+                {
+                    LoadAllEvents();
+                });
             };
 
             _refreshTimer.Start();
         }
 
+        // =========================
+        // LOAD DATA (FIXED)
+        // =========================
         private void LoadAllEvents()
         {
             var grid = this.FindControl<DataGrid>("EventsGrid");
 
+            if (grid == null)
+                return;
+
             if (!File.Exists(DbPath))
             {
-                var placeholder = new List<EventModel>
+                _eventsCache = new List<EventModel>
                 {
-                    new EventModel { Details = $"Database not found:\n{DbPath}" }
+                    new EventModel
+                    {
+                        Details = $"Database not found:\n{DbPath}"
+                    }
                 };
-                grid.ItemsSource = placeholder;
+
+                ApplyToGrid(grid);
                 return;
             }
 
+            var temp = new List<EventModel>();
+
             try
             {
-                var events = new List<EventModel>();
-
                 using var connection = new SqliteConnection($"Data Source={DbPath}");
                 connection.Open();
 
@@ -82,39 +116,80 @@ namespace AvaloniaApplication1
                     LEFT JOIN EventType et 
                         ON e.EventTypeID = et.EventTypeID
                     ORDER BY e.TimeStamp DESC;
-                 ";
+                ";
 
                 using var command = new SqliteCommand(query, connection);
                 using var reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    events.Add(new EventModel
+                    temp.Add(new EventModel
                     {
                         EventID = reader.GetInt32(0),
                         TimeStamp = reader.GetString(1),
                         Source = reader.GetString(2),
                         Location = reader.GetString(3),
-                        EventName = reader.GetString(4),      // NEW
-                        EventResult = reader.GetString(5),    // NEW
+                        EventName = reader.IsDBNull(4) ? "" : reader.GetString(4),
+                        EventResult = reader.IsDBNull(5) ? "" : reader.GetString(5),
                         DeviceID = reader.GetString(6),
                         Details = reader.GetString(7),
                         EmpID = reader.GetInt32(8)
                     });
                 }
 
-                grid.ItemsSource = events;
+                _eventsCache = temp;
+
+                ApplyToGrid(grid);
+
+                this.Title = $"Loaded {_eventsCache.Count} events";
             }
             catch (Exception ex)
             {
-                var errorList = new List<EventModel>
+                _eventsCache = new List<EventModel>
                 {
-                    new EventModel { Details = $"Error loading database:\n{ex.Message}" }
+                    new EventModel
+                    {
+                        Details = $"Error loading database:\n{ex.Message}"
+                    }
                 };
-                grid.ItemsSource = errorList;
+
+                ApplyToGrid(grid);
             }
         }
 
+        private void Grid_SelectionChanged(object? sender, SelectionChangedEventArgs e)
+        {
+            var grid = sender as DataGrid;
+            if (grid?.SelectedItem is not EventModel selected)
+                return;
+
+            if (_detailsPanel == null)
+                return;
+
+            _detailsPanel.Text =
+                $"Time: {selected.TimeStamp}\n" +
+                $"Source: {selected.Source}\n" +
+                $"Location: {selected.Location}\n" +
+                $"Event: {selected.EventName}\n" +
+                $"Result: {selected.EventResult}\n\n" +
+                $"{selected.Details}";
+        }
+
+        // =========================
+        // FORCE SAFE UI UPDATE
+        // =========================
+        private void ApplyToGrid(DataGrid grid)
+        {
+            Dispatcher.UIThread.Post(() =>
+            {
+                grid.ItemsSource = null;
+                grid.ItemsSource = _eventsCache;
+            });
+        }
+
+        // =========================
+        // NAVIGATION
+        // =========================
         private void GoToUserControl1(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             this.Content = new UserControl1(this);
