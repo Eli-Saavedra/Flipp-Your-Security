@@ -13,9 +13,19 @@
 		<Content Include="Data\Database1b.db">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+
+		<!-- Where current file is but am moving it so other can use the code and not have
+		to change it. 
 		<Content Include="/home/eliud/Desktop/FlipperInput.txt">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+		-->
+
+		<!-- Adding this part so that way we don't have to change path back and forth. -->
+		<Content Include="Data\FlipperInput.txt">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+
 	</ItemGroup>
 	<ItemGroup>
 		<AvaloniaResource Include="Assets\**" />
