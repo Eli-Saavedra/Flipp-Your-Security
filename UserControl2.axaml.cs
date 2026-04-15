@@ -11,7 +11,7 @@ public partial class UserControl2 : UserControl
     private MainWindow _mainWindow;
     private DispatcherTimer _timer;
 
-    private string FlipperInputPath = @"C:\FlipperData\FlipperInput.txt";
+    private string FlipperInputPath = @"/home/eliud/Desktop/FlipperInput.txt";
 
     public UserControl2(MainWindow mainWindow)
     {

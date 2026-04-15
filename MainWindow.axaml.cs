@@ -11,7 +11,7 @@ namespace AvaloniaApplication1
     public partial class MainWindow : Window
     {
         private string DbPath => Path.Combine(AppContext.BaseDirectory, "Data", "Database1b.db");
-        private string FlipperInputPath = @"C:\FlipperData\FlipperInput.txt";
+        private string FlipperInputPath = @"/home/eliud/Desktop/FlipperInput.txt";
 
         private InputScript _inputScript;
         private DispatcherTimer _refreshTimer;

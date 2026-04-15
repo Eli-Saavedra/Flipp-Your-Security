@@ -8,13 +8,12 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<None Remove="Data\Database1b.db" />
-		<None Remove="Data\FlipperInput.txt" />
 	</ItemGroup>
 	<ItemGroup>
 		<Content Include="Data\Database1b.db">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
-		<Content Include="Data\FlipperInput.txt">
+		<Content Include="/home/eliud/Desktop/FlipperInput.txt">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
