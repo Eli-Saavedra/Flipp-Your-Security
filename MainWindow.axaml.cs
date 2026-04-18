@@ -60,6 +60,7 @@ namespace AvaloniaApplication1
                 _inputScript.Process();
 
                 // IMPORTANT: force UI update safely
+                // This is caused the table to reset back to the top
                 Dispatcher.UIThread.Post(() =>
                 {
                     LoadAllEvents();
@@ -68,6 +69,7 @@ namespace AvaloniaApplication1
 
             _refreshTimer.Start();
         }
+
 
         // =========================
         // LOAD DATA (FIXED)

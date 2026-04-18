@@ -1,26 +1,42 @@
 <Application xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="AvaloniaApplication1.App"
-             RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="AvaloniaApplication1.App"
+	RequestedThemeVariant="Default">
+	<!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other
+	available options. -->
 
-    <Application.Styles>
-        <FluentTheme />
-         <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
+	<Application.Styles>
+		<FluentTheme />
+		<StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
 
-	 <Style Selector="DataGridColumnHeader">
-	 	<Setter Property="FontSize" Value="20"/>
-		<Setter Property="Foreground" Value="Black"/>
-		<Setter Property="FontWeight" Value="Bold"/>
-	</Style>
+		<Style Selector="DataGridColumnHeader">
+			<Setter Property="FontSize" Value="20" />
+			<Setter Property="Foreground" Value="Black" />
+			<Setter Property="FontWeight" Value="Bold" />
+		</Style>
 
-	 <Style Selector="DataGridCell">
-	 	<Setter Property="FontSize" Value="20"/>
-		<Setter Property="Foreground" Value="Black"/>
-	</Style>
-	
+		<Style Selector="DataGrid">
+			<Setter Property="Foreground" Value="Black" />
+			<Setter Property="Background" Value="White" />
+		</Style>
+
+		<Style Selector="DataGridCell">
+			<Setter Property="FontSize" Value="20" />
+			<Setter Property="Foreground" Value="Black" />
+			<Setter Property="HorizontalContentAlignment" Value="Center" />
+			<Setter Property="VerticalContentAlignment" Value="Center" />
+		</Style>
+
+		<Style Selector="DataGridRow">
+			<Setter Property="Foreground" Value="Black" />
+			<Setter Property="Background" Value="White" />
+		</Style>
+
+		<Style Selector="DataGridRow:selected">
+			<Setter Property="Background" Value="#CCE5FF" />
+			<Setter Property="Foreground" Value="Black" />
+		</Style>
 
 
-
-    </Application.Styles>
+	</Application.Styles>
 </Application>

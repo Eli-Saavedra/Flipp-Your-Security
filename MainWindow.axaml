@@ -10,30 +10,6 @@
 	Height="600"
 	mc:Ignorable="d">
 
-	<Window.Styles>
-
-		<Style Selector="DataGrid">
-			<Setter Property="Foreground" Value="Black" />
-			<Setter Property="Background" Value="White" />
-		</Style>
-
-		<Style Selector="DataGridRow">
-			<Setter Property="Foreground" Value="Black" />
-			<Setter Property="Background" Value="White" />
-		</Style>
-
-		<Style Selector="DataGridRow:selected">
-			<Setter Property="Background" Value="#CCE5FF" />
-			<Setter Property="Foreground" Value="Black" />
-		</Style>
-
-		<Style Selector="DataGridCell">
-			<Setter Property="Foreground" Value="Black" />
-		</Style>
-
-	</Window.Styles>
-
-
 	<Grid Background="Gainsboro"
 		Margin="20"
 		RowDefinitions="Auto, 700, *"
@@ -42,7 +18,7 @@
 		HorizontalAlignment="Stretch">
 
 		<!-- Header Grid-->
-		<Grid Background="Purple"
+		<Grid
 			Grid.Row="0" Grid.Column="0"
 			RowDefinitions="Auto"
 			ColumnDefinitions="Auto,Auto,Auto">
@@ -79,7 +55,11 @@
 			IsReadOnly="True"
 			Background="White"
 			Foreground="Black"
-			GridLinesVisibility="All">
+			GridLinesVisibility="All"
+			CanUserSortColumns="True"
+			MaxHeight="700"
+			Height="700">
+
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="TimeStamp" Binding="{Binding TimeStamp}"
 					Width="Auto" />
