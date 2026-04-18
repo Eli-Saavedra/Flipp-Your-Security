@@ -22,9 +22,10 @@
 		-->
 
 		<!-- Adding this part so that way we don't have to change path back and forth. -->
-		<Content Include="Data\FlipperInput.txt">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
+
+		<!-- <Content Include="Data\FlipperInput.txt"> -->
+		<!-- 	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> -->
+		<!-- </Content> -->
 
 	</ItemGroup>
 	<ItemGroup>

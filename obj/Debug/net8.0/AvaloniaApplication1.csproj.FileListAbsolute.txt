@@ -307,4 +307,3 @@ C:/Users/Gamer Master/source/repos/AvaloniaApplication1 - Copy/AvaloniaApplicati
 /home/eliud/Documents/AvaloniaApplication1 - Copy/AvaloniaApplication1/obj/Debug/net8.0/AvaloniaApplication1.pdb
 /home/eliud/Documents/AvaloniaApplication1 - Copy/AvaloniaApplication1/obj/Debug/net8.0/AvaloniaApplication1.genruntimeconfig.cache
 /home/eliud/Documents/AvaloniaApplication1 - Copy/AvaloniaApplication1/obj/Debug/net8.0/ref/AvaloniaApplication1.dll
-/home/eliud/Documents/AvaloniaApplication1 - Copy/AvaloniaApplication1/bin/Debug/net8.0/Data/FlipperInput.txt
